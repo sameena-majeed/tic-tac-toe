@@ -1,0 +1,35 @@
+instead of using keyboard x and o, we use pure css.
+
+::after and ::before used to create marks (x and o).
+
+The ::before and ::after pseudo-elements in CSS allows you to insert content onto a page without it needing to be in the HTML. While the end result is not actually in the DOM, it appears on the page as if it is,
+
+box-sizing
+The box-sizing CSS property sets how the total width and height of an element is calculated.
+
+cursor: pointer; ->> on each cell u can point
+cursor: not allowed --> cell.x and cell.circle ... so that u can no more point on them and give no other marks over again.
+
+board.x .cell:not(.x):not(.circle):hover::after
+so that hover occurs only when u are not already on circle and not on x
+
+.winning-message{
+	display: none; 
+	}
+used for a div when u dont want to display that div by default.
+but add an extra class like 'show' for that div and:
+
+.winning-message.show{
+	display: flex;
+}
+so that only when show class added to that winning-message div this div style will take place.
+
+cells.addEventListener('click', handleClick, {once: true}));
+    // once true -- so that each cell can be clicked exactly once.
+    
+   Array.prototype.some()
+
+The some() method tests whether at least one element in the array passes the test implemented by the provided function. It returns true if, in the array, it finds an element for which the provided function returns true; otherwise it returns false. It doesn't modify the array. 
+
+Array.prototype.every()
+The every() method tests whether all elements in the array pass the test implemented by the provided function. It returns a Boolean value. 

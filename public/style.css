@@ -1,0 +1,166 @@
+*, *::after, *::after{
+    box-sizing: border-box;
+}
+
+:root{
+    --cell-size: 100px;
+    /* mark-size- size of cross and O will b ninety percent of the cell size. */
+    --mark-size: calc(var(--cell-size)* .9);
+
+}
+/* to remove all the margins */
+body{
+    margin: 0;
+}
+.board{
+    display:grid;
+    width:100vw;
+    height:100vh;
+    justify-content: center;
+    align-content: center;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    /* to make columns of  */
+    grid-template-columns: repeat(3, auto);
+}
+
+.cell{
+    /* y do v really do this?  */
+    height: var(--cell-size);
+    width: var(--cell-size);
+    /* background-color: black; */
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+.cell.x,
+.cell.circle{
+    cursor:not-allowed;
+
+}
+
+.cell:first-child,
+.cell:nth-child(2),
+.cell:nth-child(3){
+    border-top: none;
+}
+
+.cell:nth-child(3n +1){
+    border-left: none;
+}
+
+.cell:nth-child(3n){
+    border-right: none;
+}
+.cell:last-child,
+.cell:nth-child(7),
+.cell:nth-child(8){
+    border-bottom: none;
+}
+
+.cell.x::after,
+.cell.x::before{
+background-color: black;
+}
+
+.board.x .cell:not(.x):not(.circle):hover::after,
+.board.x .cell:not(.x):not(.circle):hover::before,
+.board.circle .cell:not(.x):not(.circle):hover::after,
+.board.circle .cell:not(.x):not(.circle):hover::before{
+    background: lightgrey;
+}
+
+/* board.x .cell:not(.x):not(.circle):hover::after
+so that hover occurs only when u are not already on circle and not on x */
+.cell.x::after,
+.cell.x::before,
+.board.x .cell:not(.x):not(.circle):hover::before,
+.board.x .cell:not(.x):not(.circle):hover::after{
+    content: "";
+    height: var(--mark-size) ;
+    width: calc(var(--mark-size) * .15) ;
+    position: absolute;
+}
+
+.board.x .cell:not(.x):not(.circle):hover::after,
+.cell.x::after{
+    transform: rotate(45deg);
+}
+
+/* opposite direction */
+.board.x .cell:not(.x):not(.circle):hover::before,
+.cell.x::before{
+    transform: rotate(-45deg);
+}
+
+.cell.circle::after,
+.cell.circle::before,
+.board.circle .cell:not(.x):not(.circle):hover::before,
+.board.circle .cell:not(.x):not(.circle):hover::after{
+    content: "";
+    border-radius: 50%;
+    position: absolute;
+}
+
+.cell.circle::before{
+    background-color: black;
+}
+
+.board.circle .cell:not(.x):not(.circle):hover::before{
+    background-color: lightgrey;
+}
+
+.cell.circle::before,
+ .board.circle .cell:not(.x):not(.circle):hover::before {
+    
+    height: var(--mark-size) ;
+    width: var(--mark-size) ;
+   
+}
+.cell.circle::after,
+.board.circle .cell:not(.x):not(.circle):hover::after {
+    height: calc(var(--mark-size)*.6) ;
+    width: calc(var(--mark-size)*.6 );
+    background-color: white;
+}
+
+.winningMessage{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;   
+    /* .8 here gives  a transparent effect*/
+    background-color: rgba(0, 0, 0, .8);
+    
+    flex-direction: column;
+    color: silver;  
+    justify-content: center;
+    align-items: center;
+    font-size: 7rem;
+}
+.winningMessage.show{
+    display: flex;
+}
+
+.restartButton{
+    padding: .5em .5em;
+    font-size: 2rem;
+    border: black;
+    border-radius: 10px;
+}
+.restartButton:hover{
+    padding: .5em .5em;
+    
+    border: white;
+    color: white;
+    background-color: black;
+}
+
+
+
